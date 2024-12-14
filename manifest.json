@@ -1,0 +1,57 @@
+{
+  "manifest_version": 3,
+  "name": "XML Reference",
+  "description": "Shortcut that gets the XML for you",
+  "version": "2.0",
+  "permissions": [
+    "clipboardWrite",
+    "activeTab",
+    "scripting",
+    "nativeMessaging",
+    "storage"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": "hand.png"
+  },
+  "options_ui": {
+    "page": "tree.html",
+    "open_in_tab": true
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "vis.min.js",
+        "vis.min.css",
+        "tree.html"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "content_scripts": [
+    {
+      "js": ["content.js"],
+      "matches": ["<all_urls>"],
+      "all_frames": true,
+      "run_at": "document_start"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "trigger_getID": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Y",
+        "mac": "Command+Shift+Y"
+      },
+      "description": "Trigger getID action"
+    }
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
+}

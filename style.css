@@ -1,0 +1,108 @@
+html{
+    width: 250px; 
+    height: 400px; 
+}
+.container {
+    display: flex;
+    align-items: center;
+}
+#outputHtml {
+    max-width: 200px; 
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    margin-right: 10px;
+  }
+#outputCss {
+    max-width: 200px; 
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    margin-right: 10px;
+  }
+#buffer{
+    max-width: 200px; 
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    margin-right: 10px;
+}
+body, h1, p {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 20px;
+}
+
+/* Header styles */
+h1 {
+    font-size: 24px;
+    color: #4a4a4a;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Output paragraph styles */
+#outputId, #outputClass, #outputHtml, #outputCss{
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 16px;
+    width: 300px; /* Set a fixed width for all output elements */
+    height: 50px; /* Set a fixed height for all output elements */
+    text-align: center; /* Center text within the output elements */
+    overflow: hidden; /* Hide overflow text */
+}
+
+/* Container styles */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Button styles */
+#copyButtonCss, #copyButtonHtml, #showTree {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#copyButtonCss:hover, #copyButtonHtml:hover, #showTree:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    #outputId, #outputClass, #outputHtml, #outputCss {
+        font-size: 14px;
+        width: 100%; /* Make output elements full width on small screens */
+        height: auto; /* Allow height to adjust on small screens */
+    }
+
+    #copyButtonCss, #copyButtonHtml, #showTree {
+        width: 100%;
+    }
+}
