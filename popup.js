@@ -20,18 +20,22 @@ document.addEventListener("DOMContentLoaded", ()=>{
             displayElementInfo(message.data)
         }
     })
-    document.getElementById("showTree").addEventListener("click", ()=>{
-        chrome.tabs.query({active: true, currentWindow: true}, (tabs)=>{
-            console.log("switch clicked")
-            chrome.tabs.sendMessage(tabs[0].id, {action: "analyzeDom"}, ()=>{
-                window.open(chrome.runtime.getURL(`tree.html?timestamp=${Date.now()}`));
-                // chrome.tabs.create({ 
-                //     url: chrome.runtime.getURL(`tree.html?timestamp=${Date.now()}`)
-                // })
-            })
-        })
-        
-    })
+    document.getElementById("showTree").addEventListener("click", () => {
+        chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
+            // Send message to analyze DOM in the current tab
+            chrome.tabs.sendMessage(tabs[0].id, {action: "analyzeDom"}, (response) => {
+                if (chrome.runtime.lastError) {
+                    console.error(chrome.runtime.lastError);
+                    return;
+                }
+                
+                // Create the tree tab after DOM analysis
+                chrome.tabs.create({ 
+                    url: chrome.runtime.getURL(`tree.html?timestamp=${Date.now()}`)
+                });
+            });
+        });
+    });
 
     
     function copyTextCss(){

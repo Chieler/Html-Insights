@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         // Modify ID to ensure uniqueness if needed
                         id: `${node.id}_${index}`,
                         label: `${node.tag}\n${(node.content || '').substring(0, 30)}`
+
                     }))
             );
 
@@ -31,6 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
                            response.domTree.findIndex(n => n.id === node.parent),
                     to: node.id + '_' + 
                         response.domTree.findIndex(n => n.id === node.id)
+                        
                 }))
             );
 
@@ -42,7 +44,20 @@ document.addEventListener("DOMContentLoaded", () => {
                         direction: 'UD',
                         sortMethod: 'directed'
                     }
-                }
+                },
+                physics: {
+                    enabled: false,
+                  },
+                  nodes: {
+                    scaling: {
+                      min: 10,
+                      max: 30
+                    }
+                  },
+                  interaction: {
+                    hover: false, 
+                    multiselect: false
+                  }
             };
 
             try {
