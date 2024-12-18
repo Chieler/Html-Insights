@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "XML Reference",
-  "description": "Shortcut that gets the XML for you",
-  "version": "2.0",
+  "name": "Html Selector Extension",
+  "description": "Shortcut that gets the Html for you. Simply press Cmd + Shift + Y to enter selection mode, and right click on the desired element. The Html would appear on the extension page. Also supports Dom tree visualizing",
+  "version": "3.0",
   "permissions": [
     "clipboardWrite",
     "activeTab",
@@ -15,7 +15,7 @@
   ],
   "action": {
     "default_popup": "index.html",
-    "default_icon": "hand.png"
+    "default_icon": "tree2.png"
   },
   "options_ui": {
     "page": "tree.html",

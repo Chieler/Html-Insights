@@ -19,7 +19,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     .map((node, index) => ({
                         // Modify ID to ensure uniqueness if needed
                         id: `${node.id}_${index}`,
-                        label: `${node.tag}\n${(node.content || '').substring(0, 30)}`
+                        label: `${node.tag}\n${(node.content || '').substring(0, 30)}`,
+                        shape: 'circle',
+                        
 
                     }))
             );
@@ -31,7 +33,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     from: response.domTree.find(n => n.id === node.parent).id + '_' + 
                            response.domTree.findIndex(n => n.id === node.parent),
                     to: node.id + '_' + 
-                        response.domTree.findIndex(n => n.id === node.id)
+                        response.domTree.findIndex(n => n.id === node.id), 
+                    color: { color: '#ff9900', highlight: '#ffcc00' }, 
+                    arrows: 'to'
                         
                 }))
             );
@@ -42,7 +46,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 layout: {
                     hierarchical: {
                         direction: 'UD',
-                        sortMethod: 'directed'
+                        sortMethod: 'directed',
+                        avoidOverlap: true,
+                        levelSeparation: 300,
                     }
                 },
                 physics: {
@@ -50,12 +56,12 @@ document.addEventListener("DOMContentLoaded", () => {
                   },
                   nodes: {
                     scaling: {
-                      min: 10,
-                      max: 30
+                      min: 15,
+                      max: 35
                     }
                   },
                   interaction: {
-                    hover: false, 
+                    hover: true, 
                     multiselect: false
                   }
             };
